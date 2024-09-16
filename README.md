@@ -31,6 +31,34 @@ Menurut saya, framework Django dijadikan permulaan dalam pembelajaran pengembang
 ### Mengapa model pada Django disebut sebagai ORM?
 Model pada Django disebut sebagai ORM karena mengkonversi datanya dalam basis data berbentuk tabel relasional. Hal ini membuat pengembang dapat berinteraksi dengan basis data tanpa perlu menulis SQL secara langsung.
 
+# Tugas Individu 3
+### Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+Kita memerlukan data delivery dalam pengimplementasian sebuah platform untuk memastikan bahwa data yang diperlukan oleh pengguna dapat diperoleh dengan cepat dan efisien.
 
+### Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+Menurut saya, JSON lebih unggul karena strukturnya yang lebih sederhana dan mudah dimengerti oleh manusia dibandingkan dengan XML. Dalam XML, terdapat banyak tag yang harus dibuka dan ditutup, yang membuatnya lebih rumit dan panjang. Sebaliknya, struktur JSON menyerupai dictionary dalam Python, sehingga lebih mudah dibaca. Selain itu, JSON lebih populer karena lebih mudah diproses oleh bahasa pemrograman modern seperti JavaScript, di mana data dalam format JSON dapat langsung diolah tanpa memerlukan library tambahan atau alat bantu khusus. Ukuran file JSON yang umumnya lebih kecil dibandingkan dengan XML juga membuatnya lebih efisien dalam pengiriman data melalui jaringan, sehingga mempercepat proses transmisi.
 
+### Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+Method `is_valid()` pada form Django berfungsi untuk memastikan bahwa isi/data dari pengisian form merupakan informasi yang valid yang sesuai dengan retriksi yang diberikan. Kita membutuhkan method `is_valid()` agar dapat memperoleh data yang bersih dan sesuai dengan format yang kita inginkan.
 
+### Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+Kita membutuhkan `crsf_token` saat membuat form di Django untuk melindungi aplikasi dari serangan Cross-Site Request Forgery (CSRF). Cross-Site Request Forgery (CSRF) adalah serangan yang bertujuan untuk membuat seorang pengguna melakukan hal-hal yang tidak diinginkan terhadap aplikasi berbasis web tanpa sepengetahuan pengguna tersebut. Keberadaan `csrf_token` adalah untuk memastikan semua token yang dikirimkan pada permintaan POST yang diterima oleh server sesuai dengan token yang dihasilkan oleh sesi dari pengguna tersebut untuk dapat melakukan POST. Ketidakadaan `csrf_token` dapat dimanfaatkan oleh penyerang untuk mengirimkan permintaan POST dengan menggunakan sesi pengguna yang aktif tanpa diketahui oleh server bahwa permintaan tersebut bukanlah permintaan yang sah dari pengguna.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Hal pertama yang saya lakukan adalah membuat `base.html` di dalam direktori templates pada direktori utama sebagai template umum untuk halaman web lainnya pada proyek. Kemudian, saya juga menambahkan base.html sebagai templates pada `settings.py` dan mengubah `main.html` saya ke dalam struktur yang telah didefinisikan pada `base.html`
+
+2. Kemudian, saya menambahkan variabel id yang berisi UUID (string acak) pada class Product pada berkas `models.py` di direktori main agar setiap respons memiliki id yang unik.
+
+3. Ketiga, saya membuat form input data produk dengan cara membuat berkas `forms.py` di direktori main yang bertujuan untuk menerima data produk baru yang akan dijual oleh Luveina's Store. pada file `forms.py` ini, saya membuat class ProductForm yang berisi fields nama produk, harga produk dan deskripsi produk.
+
+4. Untuk memastikan bahwa form yang telah saya buat dapat ditampilkan ke pengguna, saya memodifikasi `views.py` milik direktori main dengan menambahkan fungsi baru yaitu `create_product(request)` yang menerima parameter request dengan tujuan untuk menampilkan form kepada pengguna dan menangkap respons pengguna melalui proses validasi hingga penyimpanan data. Selain itu, saya juga membuat file `create_product.html` sebagai file yang akan ditampilkan kepada pengguna.
+
+5. Selain fungsi create_product, saya juga menambahkan 4 fungsi lainnya yaitu `show_xml(request)` dan `show_json(request)` untuk menampilkan data respons dalam bentuk xml dan JSON serta `show_xml_by_id(request, id)` dan `show_json_by_id(request, id)` untuk menampilkan data respons sesuai dengan id yang diberikan dalam bentuk xml dan JSON.
+
+6. Untuk memastikan `urls.py` dapat mengarahkan pengguna ke laman yang tepat, saya mengimpor semua fungsi baru yang telah saya buat tadi dan menambahkan path URLnya ke dalam variabel urlpatterns milik `urls.py` pada direktori main
+
+### Screenshot Postman
+![xml](images/xml.png)
+![json](images/json.png)
+![xml_by_id](images/xml_id.png)
+![json_by_id](images/json_id.png)

@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1>Welcome to Luveina's Store</h1>
 <p>{{ author }}</p>
 <p>{{ class }}</p>
@@ -7,3 +9,32 @@
 <p>{{ price }}</p> <!-- Ubah sesuai dengan harga -->
 <h3>Description: </h3>
 <p>{{ description }}</p> <!-- Ubah sesuai dengan deskripsi -->
+
+{% if not products %}
+<p>Belum ada data produk pada Luveina's Store.</p>
+{% else %}
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Price</th>
+    <th>Description</th>
+  </tr>
+
+  {% comment %} Berikut cara memperlihatkan data product di bawah baris ini 
+  {% endcomment %} 
+  {% for product in products %}
+  <tr>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.description}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+  <button>Add New Product</button>
+</a>
+{% endblock content %}
