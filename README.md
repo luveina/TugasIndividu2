@@ -62,3 +62,29 @@ Kita membutuhkan `crsf_token` saat membuat form di Django untuk melindungi aplik
 ![json](images/json.png)
 ![xml_by_id](images/xml_id.png)
 ![json_by_id](images/json_id.png)
+
+# Tugas Individu 4
+### Apa perbedaan antara HttpResponseRedirect() dan redirect()
+Secara fungsional, keduanya memiliki fungsi yang sama. Namun, `redirect()` merupakan bentuk lebih singkat, aman, fleksibel dan praktis karena hal yang dioper dalam argumen dapat berupa macam-macam hal, seperti URL, view, dan bahkan model. Sedangkan, `HttpResponseRedirect()` harus disertai dengan URL sehingga kita harus menyediakannya secara eksplisit.
+
+### Jelaskan cara kerja penghubungan model Product dengan User!
+Penghubungan model antara Product dan User pada kasus ini dilakukan dengan menggunakan ForeignKey, yaitu membuat relasi antara dua model dalam basis data. Dalam konteks ini, ForeignKey digunakan untuk menunjukkan bahwa setiap entri pada model Product terkait dengan satu User dan satu User dapat terkait dengan lebih dari satu entri
+
+### Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+Perbedaan authentication dan authorization terletak pada fungsinya. Authentication berfungsi untuk membatasi user yang dapat mengakses suatu laman. Sedangkan, authorization berfungsi untuk membatasi user dalam melakukan sesuatu di dalam laman tersebut
+
+### Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+Django mengingat user yang telah login dengan menggunakan session, yaitu cara untuk menyimpan informasi user di server dan mengirimkan session ID ke browser user. Sedangkan, cookies digunakan untuk menyimpan session ID di browser user. Kegunaan lain dari cookies adalah untuk menyimpan preferensi user, seperti bahasa, tema, dan lain-lain. Meskipun memiliki banyak kegunaan, tidak semua cookies aman digunakan karena cookies dapat digunakan untuk melacak user dan mengumpulkan informasi pribadi user.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Mengimpor UserCreationForm agar pendaftaran user dapat lebih mudah tanpa harus membuat dari awal
+2. Membuat fungsi `register()` pada `views.py` yang berfungsi untuk menampilkan form pendaftaran user
+3. Membuat `register.html` sebagai template untuk form pendaftaran user
+4. Mengimpor fungsi `register()` dan menambahkan path URLnya ke dalam variabel urlpatterns pada `urls.py`
+5. Mengimpor AuthenticationForm agar login logout dapat lebih mudah dilakukan tanpa harus membuat dari awal dan mengimpor fungsi `authenticate()`, `login()`, dan `logout()` pada `views.py` yang merupakan fungsi bawaan dari Django agar user dapat login dan logout
+6. Membuat fungsi `login_user()` dan `logout_user()` pada `views.py` yang memanfaatkan fungsi bawaan `login()` dan `logout()` milik Django dengan sedikit modifikasi yang berfungsi untuk menampilkan form login user dan melakukan redirect ke halaman utama setelah logout
+7. Membuat `login.html` sebagai template untuk form login user dan membuat button untuk logout
+8. Mengimpor dan Menambahkan path URL `login_user()` dan `logout_user()` ke dalam variabel urlpatterns pada `urls.py`
+9. Mengimpor fungsi `login_required` agar user yang belum login tidak dapat mengakses halaman tertentu dan menambahkan decorator `login_required` pada fungsi yang ingin diakses oleh user yang sudah login
+10. Mengimpor datetime, HttpResposeRedirect, dan reverse untuk menampilkan waktu terakhir login user. Kemudian, menambahkan field last_login pada context di view.py agar dapat menyimpan waktu terakhir login user dan menampilkannya ketika user berhasil login. Ketika melakukan logout, cookie last_login akan dihapus
+11. Mengimpor User pada `models.py` dan menambahkan user pada model Product dengan menggunakan ForeignKey agar setiap entri pada model Product terkait dengan satu User dan satu User dapat terkait dengan lebih dari satu entri
