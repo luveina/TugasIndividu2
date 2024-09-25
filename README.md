@@ -88,3 +88,7 @@ Django mengingat user yang telah login dengan menggunakan session, yaitu cara un
 9. Mengimpor fungsi `login_required` agar user yang belum login tidak dapat mengakses halaman tertentu dan menambahkan decorator `login_required` pada fungsi yang ingin diakses oleh user yang sudah login
 10. Mengimpor datetime, HttpResposeRedirect, dan reverse untuk menampilkan waktu terakhir login user. Kemudian, menambahkan field last_login pada context di view.py agar dapat menyimpan waktu terakhir login user dan menampilkannya ketika user berhasil login. Ketika melakukan logout, cookie last_login akan dihapus
 11. Mengimpor User pada `models.py` dan menambahkan user pada model Product dengan menggunakan ForeignKey agar setiap entri pada model Product terkait dengan satu User dan satu User dapat terkait dengan lebih dari satu entri
+
+### Bukti Pembuatan Akun
+![bukti_akun1](images/bukti_akun1.png)
+![bukti_akun2](images/bukti_akun2.png)
