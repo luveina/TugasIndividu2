@@ -92,3 +92,25 @@ Django mengingat user yang telah login dengan menggunakan session, yaitu cara un
 ### Bukti Pembuatan Akun
 ![bukti_akun1](images/bukti_akun1.png)
 ![bukti_akun2](images/bukti_akun2.png)
+
+# Tugas Individu 5
+### Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+Urutan prioritas pengambilan CSS selector adalah sebagai berikut:
+1. Inline CSS: Inline CSS memiliki prioritas tertinggi karena didefinisikan langsung pada elemen HTML.
+2. Internal CSS: Internal CSS memiliki prioritas kedua karena didefinisikan pada tag `<style>` di dalam tag `<head>`.
+3. External CSS: External CSS memiliki prioritas terendah karena didefinisikan pada file eksternal CSS.
+
+### Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+Responsive design menjadi konsep yang penting dalam pengembangan aplikasi web karena memungkinkan tampilan aplikasi web menyesuaikan diri dengan berbagai perangkat dan ukuran layar yang berbeda. Contoh aplikasi yang sudah menerapkan responsive design adalah Google, Facebook, dan Twitter. Sedangkan, contoh aplikasi berbasis web yang belum menerapkan responsive design adalah SIAKNG.
+
+### Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+Margin adalah jarak antara elemen dengan elemen lainnya di luar border, sedangkan border adalah garis yang mengelilingi elemen, dan padding adalah jarak antara elemen dengan border. Untuk mengimplementasikan margin, border, dan padding, kita dapat menggunakan properti CSS `margin`, `border`, dan `padding` dengan nilai yang sesuai.
+
+### Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+Flexbox adalah teknik layouting CSS yang memungkinkan elemen-elemen dalam suatu container untuk menyesuaikan ukuran dan posisinya secara dinamis. Flexbox sangat berguna untuk membuat tata letak yang responsif dan fleksibel. Grid layout adalah teknik layouting CSS yang memungkinkan elemen-elemen dalam suatu container untuk diatur dalam grid dua dimensi. Grid layout sangat berguna untuk membuat tata letak yang kompleks dan simetris.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+1. Menambahkan tailwind ke aplikasi Django dengan cara meletakkan script CDN Tailwind di bagian head pada `base.html` yang berperan sebagai template utama aplikasi.
+2. Menggunakan Tailwind CSS untuk mengatur tata letak dan tampilan aplikasi dengan cara menambahkan class-class yang disediakan oleh Tailwind CSS pada elemen-elemen HTML yang ingin diubah tampilannya, contohnya pada file `login.html`, `register.html`, `create_product.html`, `main.html`, `edit_product.html`, `card_product.html`, `card_info.html`, dan `navbar.html`.
+3. Membuat fungsi `delete_product()` dan `edit_product()` pada `views.py` yang berfungsi untuk menghapus dan mengedit data produk.
+4.  Membuat tombol edit dan delete pada setiap card product yang akan mengarahkan ke halaman edit dan delete produk yang telah dibuat sebelumnya.
