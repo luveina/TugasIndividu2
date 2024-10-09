@@ -114,3 +114,25 @@ Flexbox adalah teknik layouting CSS yang memungkinkan elemen-elemen dalam suatu 
 2. Menggunakan Tailwind CSS untuk mengatur tata letak dan tampilan aplikasi dengan cara menambahkan class-class yang disediakan oleh Tailwind CSS pada elemen-elemen HTML yang ingin diubah tampilannya, contohnya pada file `login.html`, `register.html`, `create_product.html`, `main.html`, `edit_product.html`, `card_product.html`, `card_info.html`, dan `navbar.html`.
 3. Membuat fungsi `delete_product()` dan `edit_product()` pada `views.py` yang berfungsi untuk menghapus dan mengedit data produk.
 4.  Membuat tombol edit dan delete pada setiap card product yang akan mengarahkan ke halaman edit dan delete produk yang telah dibuat sebelumnya.
+
+# Tugas Individu 6
+### Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+1. Interaktif: JavaScript memungkinkan pengguna untuk menambahkan interaksi dan responsivitas pada aplikasi web. Misalnya, animasi, validasi form, dan navigasi halaman.
+2. Kecepatan: JavaScript dieksekusi langsung oleh browser pengguna tanpa perlu berkomunikasi dengan server, sehingga dapat meningkatkan kecepatan aplikasi web.
+3. Ekosistem Luas: JavaScript memiliki banyak library dan framework yang dapat digunakan untuk memperluas fungsionalitas aplikasi web.
+
+### Jelaskan fungsi dari penggunaan `await` ketika kita menggunakan `fetch()`! Apa yang akan terjadi jika kita tidak menggunakan `await`?
+Penggunaan `await` pada `fetch()` digunakan untuk menunggu hingga proses pengambilan data dari server selesai sebelum melanjutkan eksekusi kode selanjutnya. Jika kita tidak menggunakan `await`, maka kode selanjutnya akan dieksekusi sebelum proses pengambilan data dari server selesai, sehingga data yang diambil tidak akan tersedia.
+
+### Mengapa kita perlu menggunakan decorator `csrf_exempt` pada view yang akan digunakan untuk AJAX POST?
+Kita perlu menggunakan decorator `csrf_exempt` pada view yang akan digunakan untuk AJAX POST agar request POST yang dikirimkan melalui AJAX tidak memerlukan token CSRF. Hal ini diperlukan karena token CSRF tidak dapat diambil dari JavaScript, sehingga request POST yang dikirimkan melalui AJAX akan dianggap tidak valid jika tidak menggunakan `csrf_exempt`.
+
+### Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+Pembersihan data input pengguna dilakukan di belakang (backend) juga karena data yang dikirimkan oleh pengguna dapat dimanipulasi oleh pengguna jahat. Oleh karena itu, pembersihan data input pengguna harus dilakukan di backend untuk memastikan data yang diterima oleh server adalah data yang valid dan aman.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+1. Mengimport `csrf_exempt` dari `django.views.decorators.csrf` dan `require_POST` agar hanya menerima request POST dan agar request POST yang dikirimkan melalui AJAX tidak memerlukan token CSRF.
+2. Membuat fungsi `add_product_ajax()` pada `views.py` yang berfungsi untuk menambahkan data produk baru melalui AJAX dan menambahkan routingnya juga ke dalam `urls.py`.
+3. Membuat fungsi `refreshProducts()` pada `main.html` yang berfungsi untuk mengupdate secara berkala dan asynchronous data produk yang ditampilkan pada halaman utama.
+4. Membuat modal sebagai form untuk menambahkan produk baru pada `main.html` dan menambahkan event listener pada tombol submit form untuk mengirimkan data produk baru melalui AJAX.
+5. Menggunakan strip_tags pada fungsi `add_product_ajax()` pada `views.py` untuk membersihkan data input pengguna dari tag HTML yang berbahaya.
